@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+</head>
+<body>
+<div id="app3">
+    <componentt type="like" color='green'></componentt>
+    <componentt type="dislike" color='red'></componentt>
+</div>
+
+	<template id='count1'>
+    <h1>{{ type }}</h1>
+    <button class="btn btn-default" style="color:{{ color }}"">{{count}}</button>
+  </template>
+
+<script src="https://cdn.bootcss.com/vue/1.0.14/vue.js"></script>
+<script>
+Vue.component('componentt',{
+  //template: '<div>A custom component!</div>'
+  template: '#count1',
+  props:['type','color'],
+  data:function(){
+    return {count : 10};
+  },
+});
+
+new Vue({
+	el:'#app3'
+	
+});
+</script>
+</body>
+</html>

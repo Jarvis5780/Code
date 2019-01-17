@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<style type="text/css">
+  .complete{
+    text-decoration: line-through;
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+    <todo-app lists='sites'></todo-app>
+    <ol>
+    <li v-for="site in sites" @click="changeComplete(site)" v-bind:class="{'complete':site.complete}" >
+      {{ site.name }}
+    </li>
+</div>
+
+<template id='todolist'>
+  <ol>
+    <li v-for="site in sites" @click="changeComplete(site)" v-bind:class="{'complete':site.complete}" >
+      {{ site.name }}
+    </li>
+  </ol>
+</template>
+
+<script src="https://cdn.bootcss.com/vue/1.0.14/vue.js"></script>
+<script>
+
+  Vue.component('todo-app',{
+    template:'#todolist',
+    props:['lists']
+  });
+
+new Vue({
+  el: '#app',
+  data: {
+    sites: [
+      { name: 'Runoob' ,complete:true},
+      { name: 'Google' ,complete:true},
+      { name: 'Taobao' ,complete:false},
+      { name: 'Alibaba' ,complete:true}
+    ]
+  },
+  methods:{
+    changeComplete:function(site){
+      site.complete = !site.complete;
+    }
+  }
+})
+</script>
+</body>
+</html>

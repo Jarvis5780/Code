@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例</title>
+<style type="text/css">
+	.class{
+	  background: #444;
+	  color: #eee;
+	}
+</style>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{msg}}</div>
+    <input type="text" name="name" v-model='msg'>
+    <p v-html='code'></p>
+    
+    <hr>
+
+   <form>
+   		<p v-show='!go'> 输入内容v-show将会用style隐藏</p>
+   		<p v-if='!go'> 输入内容v-if将会用消失没有</p>
+   		<textarea v-model='go'></textarea>
+   		<button v-show='go'>提交</button>
+   </form>
+   <a v-bind:href="href">点击</a>
+   <div v-bind:class="{'class':checkbox1}">123</div>
+   <input type="checkbox" name="some" v-model='checkbox1'>
+
+   
+   <hr>
+   <div>
+   		<div v-if="Math.random() > 0.5">大于0.5显示</div>
+   		<div v-else>小于0.5显示</div>
+
+   </div>
+
+    <pre>
+    	{{$data | json}}
+    </pre>
+</div>
+	
+<script>
+	var data = { a: 1 }
+var vm = new Vue({
+	el:'#app',
+	data:{
+		msg:'hello world',
+		code:"<h1>code</h1>",
+		go:'',
+		checkbox1:false,
+		href:'http://coupon.houliming.com',
+		data1:'data1'
+	}
+});
+
+console.log(vm.msg);
+console.log(vm.data1);
+</script>
+</body>
+</html>
